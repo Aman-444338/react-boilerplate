@@ -1,5 +1,8 @@
 const SecureRequest = () => {
-  let tokenData = null;
+  let tokenData: {
+    // Replace with the key
+    accessToken: any;
+  } | null = null;
   const responseTokenKey = 'accessToken';
   const requestTokenKey = 'accessToken';
 
@@ -7,7 +10,7 @@ const SecureRequest = () => {
     return tokenData;
   };
 
-  const storeAccessToken = response => {
+  const storeAccessToken = (response:any) => {
     if (response && response.headers) {
       tokenData = {
         // Replace with the key
@@ -16,7 +19,7 @@ const SecureRequest = () => {
     }
   };
 
-  const getSecureAuthRequest = unsecuredRequest => {
+  const getSecureAuthRequest = (unsecuredRequest:any) => {
     // mutate the reuest to pass auth data
     const accessToken = getAccessToken();
     // Implement Encryption Algo
@@ -32,7 +35,7 @@ const SecureRequest = () => {
     };
   };
 
-  const getResponse = securedResponse => {
+  const getResponse = (securedResponse:any) => {
     storeAccessToken(securedResponse);
     // Implement Decryption Algo
     const response = {

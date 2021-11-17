@@ -1,6 +1,6 @@
 const { API_BASE_URL, API_TIMEOUT } = process.env;
 
-const defaultConfig = {
+const defaultConfig: any = {
   baseURL: API_BASE_URL,
   timeout: API_TIMEOUT || 3000,
 };

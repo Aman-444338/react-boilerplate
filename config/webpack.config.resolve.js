@@ -6,7 +6,7 @@ const paths = require('./paths');
  */
 module.exports = {
   modules: [paths.appSrc, 'node_modules'],
-  extensions: ['.js', '.jsx', '.scss', '.react.js'],
+  extensions: ['.tsx', '.ts','.js', '.jsx', '.scss', '.react.js'],
   mainFields: ['browser', 'module', 'main'],
   alias: {
     // Support React Native Web

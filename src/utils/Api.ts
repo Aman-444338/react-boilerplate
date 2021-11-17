@@ -4,6 +4,8 @@ import SecureRequest from './SecureRequest';
 
 class Api {
   static SecureRequest = SecureRequest();
+  authData: null;
+  requestManager: any;
 
   constructor() {
     this.authData = null;
@@ -21,29 +23,29 @@ class Api {
     );
   }
 
-  static requestInterceptor = config => {
+  static requestInterceptor = (config:any) => {
     const request = Api.SecureRequest.getSecureAuthRequest(config);
     return request;
   };
 
-  static requestInterceptorError = error => {
+  static requestInterceptorError = (error:any) => {
     return Promise.reject(error);
   };
 
-  static responseInterceptor = response => {
+  static responseInterceptor = (response:any) => {
     const newResponse = Api.SecureRequest.getResponse(response);
     return newResponse;
   };
 
-  static responseInterceptorError = error => {
+  static responseInterceptorError = (error:any) => {
     return Promise.reject(error);
   };
 
-  fetch = (options, action) => {
+  fetch = (options:any, action: any) => {
     return this.requestManager.request(options);
   };
 
-  errorHandling = (error, _action, _retries) => {
+  errorHandling = (error:any, _action:any, _retries:any) => {
     if (!error.status) return false;
 
     if (error.status === 401) {
